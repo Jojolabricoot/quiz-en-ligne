@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz en Ligne</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .answers label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz en Ligne</h1>
+        <div id="quiz">
+            <div class="question">Quelle est la capitale de la France ?</div>
+            <div class="answers">
+                <label><input type="radio" name="question1" value="Paris"> Paris</label>
+                <label><input type="radio" name="question1" value="Londres"> Londres</label>
+                <label><input type="radio" name="question1" value="Berlin"> Berlin</label>
+                <label><input type="radio" name="question1" value="Madrid"> Madrid</label>
+            </div>
+            <button class="btn" onclick="submitQuiz()">Soumettre</button>
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            const correctAnswer = "Paris";
+            const userAnswer = document.querySelector('input[name="question1"]:checked');
+            const resultDiv = document.getElementById('result');
+
+            if (userAnswer) {
+                if (userAnswer.value === correctAnswer) {
+                    resultDiv.textContent = "Correct !";
+                    resultDiv.style.color = "green";
+                } else {
+                    resultDiv.textContent = "Faux ! La bonne réponse est Paris.";
+                    resultDiv.style.color = "red";
+                }
+            } else {
+                resultDiv.textContent = "Veuillez sélectionner une réponse.";
+                resultDiv.style.color = "orange";
+            }
+        }
+    </script>
+</body>
+</html>
